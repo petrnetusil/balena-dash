@@ -28,8 +28,10 @@ services:
     build: ./photos
     ports:
       - "8888:8888"
-  vnc-app:
-    restart: always
-    build: ./vnc-app
+  vnc:
+    build: vnc
     ports:
-      - "8080:5900"
+      - "80"
+    network_mode: host
+    privileged: true
+    restart: always
