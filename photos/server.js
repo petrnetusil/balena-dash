@@ -548,7 +548,7 @@ function downloadFile(url, dest, cb) {
 
   // check for request errors
   sendReq.on("error", err => {
-    fs.unlink(dest);
+    fs.unlinkSync(dest);
     console.log(err.message);
   });
 
