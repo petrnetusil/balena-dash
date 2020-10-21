@@ -256,6 +256,7 @@ function fetchImages(albumURL) {
     var baseUrl = getBaseUrl(albumId);
 
     // Download images
+    let timeout = 1000
     getPhotoMetadata(baseUrl)
       .then(function(metadata) {
         var chunks = _chunk(metadata.photoGuids, 25);
@@ -267,7 +268,8 @@ function fetchImages(albumURL) {
 
               setTimeout(function() {
                 processChunks(i + 1);
-              }, 1000);
+                timeout = timeout + 10
+              }, timeout);
             });
           } else {
             var i = 0;
@@ -554,7 +556,7 @@ function downloadFile(url, dest, cb) {
 
   file.on("error", err => {
     // Handle errors
-    fs.unlink(dest); // Delete the file async. (But we don't check the result)
+    fs.unlinkSync(dest); // Delete the file async. (But we don't check the result)
     console.log(err.message);
   });
 }
