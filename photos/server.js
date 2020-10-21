@@ -583,12 +583,13 @@ function resizeFile(imageFile, maxWidth = 1000) {
         .toBuffer((err, buffer) => {
           if (err) {
             console.log(imageFile + " - " + err);
+          } else {
+            fs.writeFile(imageFile, buffer, (e) => {
+              if(e){
+                console.log("Error saving image to file: "+e);
+              }
+            });
           }
-          fs.writeFile(imageFile, buffer, (e) => {
-            if(e){
-              console.log("Error saving image to file: "+e);
-            }
-          });
         });
     }
   } catch (err) {
