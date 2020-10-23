@@ -69,7 +69,7 @@ if [ ! -z ${CONTROL_TV+x} ] && [ "$CONTROL_TV" -eq "1" ]
 fi
 
 # Check if we have a GALLERY_URL set, otherwise load LAUNCH_URL var
-if [[ ! -z ${GALLERY_URL} ]]
+if [[ ! -z ${GALLERY_URL} ]] && [[ ! -z ${SHOW_GALLERY} ]]
   then
     echo "Loading gallery"
     LAUNCH_URL="file:///home/chromium/public_html/index.html"

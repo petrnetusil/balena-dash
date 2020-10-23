@@ -15,7 +15,7 @@ var schedule  = require("node-schedule");
 var app       = express();
 
 // Only run server if GALLERY_URL is defined
-if(process.env.GALLERY_URL) {
+if(process.env.GALLERY_URL && process.env.SHOW_GALLERY) {
 
   // Enable HTML template middleware
   app.engine("html", require("ejs").renderFile);
@@ -148,7 +148,7 @@ if(process.env.GALLERY_URL) {
 } else {
   app.get('/', (req, res) => res.send('Hello there!!'))
   app.listen(port);
-  console.log("GALLERY_URL not set, stopping express server.");
+  console.log("GALLERY_URL and/or SHOW_GALLERY not set, stopping express server.");
 }
 
 // Functions //
