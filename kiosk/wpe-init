@@ -49,10 +49,10 @@ fi
 sleep 1
 
 # Check if we have a GALLERY_URL and SHOW_GALLERY set, otherwise load LAUNCH_URL var
-if [[ ! -z ${GALLERY_URL} ]] && [[ ! -z ${SHOW_GALLERY} ]] && [ "$SHOW_GALLERY" -eq "true" ]
+if [ ! -z ${GALLERY_URL+x} ] && [ ! -z ${SHOW_GALLERY+x} ] && [ "$SHOW_GALLERY" -eq "1" ]
   then
     echo "Loading gallery"
-    WPE_URL="file:///var/lib/public_html/index.html"
+    LAUNCH_URL="file:///home/chromium/public_html/index.html"
 fi
 
 if [[ ! -z ${WPE_URL+x} ]]

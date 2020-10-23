@@ -15,7 +15,7 @@ var schedule  = require("node-schedule");
 var app       = express();
 
 // Only run server if GALLERY_URL is defined
-if(process.env.GALLERY_URL && process.env.SHOW_GALLERY && process.env.SHOW_GALLERY === "true") {
+if(process.env.GALLERY_URL && process.env.SHOW_GALLERY && process.env.SHOW_GALLERY === "1") {
 
   // Enable HTML template middleware
   app.engine("html", require("ejs").renderFile);
